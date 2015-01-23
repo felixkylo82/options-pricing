@@ -2,6 +2,7 @@
 #include "Cdf.h"
 
 #include <cassert>
+#include <cfloat>
 
 
 BlackScholes::BlackScholes()
@@ -15,7 +16,7 @@ BlackScholes::~BlackScholes()
 double BlackScholes::callOptionValue(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	return this->callOptionDelta(spotPrice, strickPrice, years, _riskFreeInterestRate, _volatility) * spotPrice - this->callOptionRho(spotPrice, strickPrice, years, _riskFreeInterestRate, _volatility) / years * strickPrice;
@@ -24,7 +25,7 @@ double BlackScholes::callOptionValue(double spotPrice, double strickPrice, doubl
 double BlackScholes::callOptionDelta(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
@@ -36,7 +37,7 @@ double BlackScholes::callOptionDelta(double spotPrice, double strickPrice, doubl
 double BlackScholes::callOptionVega(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
@@ -48,7 +49,7 @@ double BlackScholes::callOptionVega(double spotPrice, double strickPrice, double
 double BlackScholes::callOptionTheta(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
@@ -60,7 +61,7 @@ double BlackScholes::callOptionTheta(double spotPrice, double strickPrice, doubl
 double BlackScholes::callOptionRho(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
@@ -72,7 +73,7 @@ double BlackScholes::callOptionRho(double spotPrice, double strickPrice, double 
 double BlackScholes::putOptionValue(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
@@ -84,7 +85,7 @@ double BlackScholes::putOptionValue(double spotPrice, double strickPrice, double
 double BlackScholes::putOptionDelta(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
@@ -96,7 +97,7 @@ double BlackScholes::putOptionDelta(double spotPrice, double strickPrice, double
 double BlackScholes::putOptionVega(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
@@ -108,7 +109,7 @@ double BlackScholes::putOptionVega(double spotPrice, double strickPrice, double 
 double BlackScholes::putOptionTheta(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
@@ -120,7 +121,7 @@ double BlackScholes::putOptionTheta(double spotPrice, double strickPrice, double
 double BlackScholes::putOptionRho(double spotPrice, double strickPrice, double years, double _riskFreeInterestRate, double _volatility) const {
 	if (spotPrice < 0.0) assert(false);
 	if (strickPrice < 0.0) assert(false);
-	if (years < 0.0) years = 0.0;
+	if (years < FLT_EPSILON) years = FLT_EPSILON;
 	if (_volatility < 0.0) assert(false);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;

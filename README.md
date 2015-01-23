@@ -17,9 +17,9 @@ Let X be a some random variable.
 
 And S(t, X) be the spot price and C(S, K, t, r, sigma) be the call option price.
 
-One can build a risk-free portfolio consisting of being short one call option and long delta underlying share.
+One can build a risk-free portfolio, PI, consisting of being short one call option and long delta underlying share.
 
-Let PI(S, K, t, r, sigma) be (-C + delta(S, K, t, r, sigma) * S).
+Then, PI(S, K, t, r, sigma) = -C + delta(S, K, t, r, sigma) * S.
 
 One will short one call option only if d(PI)/dt >= r * PI
 

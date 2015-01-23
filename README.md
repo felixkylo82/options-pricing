@@ -17,7 +17,7 @@ Let X be a some random variable.
 
 And S(t, X) be the spot price and C(S, K, t, r, sigma) be the call option price.
 
-One can build a risk-free portfolio consisting of being short one call option and long delta(S, C) underlying share.
+One can build a risk-free portfolio consisting of being short one call option and long delta underlying share.
 
 Let PI(S, K, t, r, sigma) be (-C + delta(S, K, t, r, sigma) * S).
 
@@ -30,7 +30,7 @@ So at the equilibrium, d(PI)/dt = r * PI
 Black Scholes' Model
 =====
 
-In this model, r * (-C + delta(S, K, t, r, sigma) * S) = d(PI)/dt = -theta(S, K, t, r, sigma) - (sigma * S)^2 / 2 * gamma(S, K, t, r, sigma)
+In this model, r * (-C + delta * S) = d(PI)/dt = -theta(S, K, t, r, sigma) - (sigma * S)^2 / 2 * gamma(S, K, t, r, sigma)
 
 where theta reflecting the loss in value due to having less time for exercising the option and gamma reflects the gain in holding the option.
 

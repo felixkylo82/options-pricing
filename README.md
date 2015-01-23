@@ -23,8 +23,14 @@ Black Scholes' Model
 =====
 Let sigma be the volatility.
 
-In this model, d(PI)/dt = -theta(C, t) - (sigma * S)^2 / 2 * gamma(S, C)
+In this model, r * (-C + delta(S, C) * S) = d(PI)/dt = -theta(C, t) - (sigma * S)^2 / 2 * gamma(S, C)
 
 where theta reflecting the loss in value due to having less time for exercising the option and gamma reflects the gain in holding the option.
 
 Also, theta <= 0 and gamma >= 0
+
+With this model, we can calculate the call (/put) option price given the spot price, strick, time to expiry, risk-free interest rate and volatility.
+
+Implied Volatility
+=====
+In reality, the actual unknown is not the option price but the volatility. We can still calculate the volatility implied by the model with all sorts of numerical methods.

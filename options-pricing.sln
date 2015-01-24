@@ -4,6 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "black-scholes", "black-scholes\black-scholes.vcxproj", "{9915A3F3-BFBC-4178-9778-ADF5C44F1176}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DBAD4A01-2080-47EB-AFDE-D432F4A55B48} = {DBAD4A01-2080-47EB-AFDE-D432F4A55B48}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "binomial", "binomial\binomial.vcxproj", "{9E3BAA8F-02AA-48EA-943D-BD896A083D72}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DBAD4A01-2080-47EB-AFDE-D432F4A55B48} = {DBAD4A01-2080-47EB-AFDE-D432F4A55B48}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "base", "base\base.vcxproj", "{DBAD4A01-2080-47EB-AFDE-D432F4A55B48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,14 @@ Global
 		{9915A3F3-BFBC-4178-9778-ADF5C44F1176}.Debug|Win32.Build.0 = Debug|Win32
 		{9915A3F3-BFBC-4178-9778-ADF5C44F1176}.Release|Win32.ActiveCfg = Release|Win32
 		{9915A3F3-BFBC-4178-9778-ADF5C44F1176}.Release|Win32.Build.0 = Release|Win32
+		{9E3BAA8F-02AA-48EA-943D-BD896A083D72}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9E3BAA8F-02AA-48EA-943D-BD896A083D72}.Debug|Win32.Build.0 = Debug|Win32
+		{9E3BAA8F-02AA-48EA-943D-BD896A083D72}.Release|Win32.ActiveCfg = Release|Win32
+		{9E3BAA8F-02AA-48EA-943D-BD896A083D72}.Release|Win32.Build.0 = Release|Win32
+		{DBAD4A01-2080-47EB-AFDE-D432F4A55B48}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DBAD4A01-2080-47EB-AFDE-D432F4A55B48}.Debug|Win32.Build.0 = Debug|Win32
+		{DBAD4A01-2080-47EB-AFDE-D432F4A55B48}.Release|Win32.ActiveCfg = Release|Win32
+		{DBAD4A01-2080-47EB-AFDE-D432F4A55B48}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,9 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9915A3F3-BFBC-4178-9778-ADF5C44F1176}</ProjectGuid>
-    <RootNamespace>blackscholes</RootNamespace>
-    <ProjectName>black-scholes</ProjectName>
+    <ProjectGuid>{9E3BAA8F-02AA-48EA-943D-BD896A083D72}</ProjectGuid>
+    <RootNamespace>binomial</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -66,13 +65,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="BlackScholes.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="BlackScholes.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\base\base.vcxproj">
       <Project>{dbad4a01-2080-47eb-afde-d432f4a55b48}</Project>

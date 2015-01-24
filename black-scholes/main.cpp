@@ -7,9 +7,9 @@
 int main(int argc, const char** argv) {
 
 	if (8 != argc) {
-		printf("usage: %s cf <conversionRatio> <spotPrice> <strickPrice> <years> <riskFreeInterestRate> <volatility>", argv[0]);
-		printf("       %s cb <optionValue> <conversionRatio> <spotPrice> <strickPrice> <years> <riskFreeInterestRate>", argv[0]);
-		printf("       %s ci <optionValue> <conversionRatio> <spotPrice> <strickPrice> <years> <volatility>", argv[0]);
+		printf("usage: %s cf <conversionRatio> <spotPrice> <strickPrice> <yearsToExpiry> <riskFreeInterestRate> <volatility>", argv[0]);
+		printf("       %s cb <optionValue> <conversionRatio> <spotPrice> <strickPrice> <yearsToExpiry> <riskFreeInterestRate>", argv[0]);
+		printf("       %s ci <optionValue> <conversionRatio> <spotPrice> <strickPrice> <yearsToExpiry> <volatility>", argv[0]);
 		return 1;
 	}
 

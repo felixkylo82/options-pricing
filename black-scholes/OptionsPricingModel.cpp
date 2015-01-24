@@ -18,12 +18,12 @@ Function::~Function() {
 
 }
 
-double Function::impliedInterestRate(double _optionValue, double spotPrice, double strickPrice, double years, double volatility) const {
+double Function::impliedInterestRate(double _optionValue, double spotPrice, double strickPrice, double yearsToExpiry, double volatility) const {
 	double impliedInterestRate = 0.0;
 
 	while (true) {
-		double optionValue = this->value(spotPrice, strickPrice, years, impliedInterestRate, volatility);
-		double derivative = this->rho(spotPrice, strickPrice, years, impliedInterestRate, volatility);
+		double optionValue = this->value(spotPrice, strickPrice, yearsToExpiry, impliedInterestRate, volatility);
+		double derivative = this->rho(spotPrice, strickPrice, yearsToExpiry, impliedInterestRate, volatility);
 
 		double newImpliedInterestRate = 0.0;
 		if (abs(derivative) < FLT_EPSILON) {
@@ -50,12 +50,12 @@ double Function::impliedInterestRate(double _optionValue, double spotPrice, doub
 	}
 }
 
-double Function::impliedVolatility(double _optionValue, double spotPrice, double strickPrice, double years, double riskFreeInterestRate) const {
+double Function::impliedVolatility(double _optionValue, double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate) const {
 	double impliedVolatility = 20.0;
 
 	while (true) {
-		double optionValue = this->value(spotPrice, strickPrice, years, riskFreeInterestRate, impliedVolatility);
-		double derivative = this->vega(spotPrice, strickPrice, years, riskFreeInterestRate, impliedVolatility);
+		double optionValue = this->value(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, impliedVolatility);
+		double derivative = this->vega(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, impliedVolatility);
 
 		double newImpliedVolatility = 0.0;
 		if (abs(derivative) < FLT_EPSILON) {
@@ -83,24 +83,24 @@ CallOptionValue::~CallOptionValue() {
 
 }
 
-double CallOptionValue::value(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.callOptionValue(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double CallOptionValue::value(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.callOptionValue(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
-double CallOptionValue::delta(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.callOptionDelta(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double CallOptionValue::delta(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.callOptionDelta(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
-double CallOptionValue::vega(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.callOptionVega(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double CallOptionValue::vega(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.callOptionVega(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
-double CallOptionValue::theta(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.callOptionTheta(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double CallOptionValue::theta(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.callOptionTheta(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
-double CallOptionValue::rho(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.callOptionRho(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double CallOptionValue::rho(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.callOptionRho(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
 PutOptionValue::PutOptionValue(OptionsPricingModel& model) : Function(model) {
@@ -111,22 +111,22 @@ PutOptionValue::~PutOptionValue() {
 
 }
 
-double PutOptionValue::value(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.putOptionValue(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double PutOptionValue::value(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.putOptionValue(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
-double PutOptionValue::delta(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.putOptionDelta(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double PutOptionValue::delta(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.putOptionDelta(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
-double PutOptionValue::vega(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.putOptionVega(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double PutOptionValue::vega(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.putOptionVega(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
-double PutOptionValue::theta(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.putOptionTheta(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double PutOptionValue::theta(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.putOptionTheta(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }
 
-double PutOptionValue::rho(double spotPrice, double strickPrice, double years, double riskFreeInterestRate, double volatility) const {
-	return this->model.putOptionRho(spotPrice, strickPrice, years, riskFreeInterestRate, volatility);
+double PutOptionValue::rho(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const {
+	return this->model.putOptionRho(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility);
 }

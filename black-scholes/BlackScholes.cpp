@@ -13,23 +13,25 @@ BlackScholes::~BlackScholes()
 {
 }
 
-double BlackScholes::callOptionValue(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::callOptionValue(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
 
-	return this->callOptionDelta(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility) * spotPrice - Cdf::N(this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * strickPrice;
+	return this->callOptionDelta(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield) * spotPrice - Cdf::N(this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * strickPrice;
 }
 
-double BlackScholes::callOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::callOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
@@ -37,11 +39,12 @@ double BlackScholes::callOptionDelta(double spotPrice, double strickPrice, doubl
 	return Cdf::N(this->d1(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility));
 }
 
-double BlackScholes::callOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::callOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
@@ -49,23 +52,25 @@ double BlackScholes::callOptionVega(double spotPrice, double strickPrice, double
 	return spotPrice * Cdf::dN(this->d1(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * sqrt(yearsToExpiry);
 }
 
-double BlackScholes::callOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::callOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
 
-	return -(this->callOptionVega(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility) * volatility / 2.0 + Cdf::N(this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * riskFreeInterestRate);
+	return -(this->callOptionVega(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield) * volatility / 2.0 + Cdf::N(this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * riskFreeInterestRate);
 }
 
-double BlackScholes::callOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::callOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
@@ -73,23 +78,25 @@ double BlackScholes::callOptionRho(double spotPrice, double strickPrice, double 
 	return Cdf::N(this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * yearsToExpiry;
 }
 
-double BlackScholes::putOptionValue(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::putOptionValue(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
 
-	return this->putOptionDelta(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility) * spotPrice - -Cdf::N(-this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * strickPrice;
+	return this->putOptionDelta(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield) * spotPrice - -Cdf::N(-this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * strickPrice;
 }
 
-double BlackScholes::putOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::putOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
@@ -97,11 +104,12 @@ double BlackScholes::putOptionDelta(double spotPrice, double strickPrice, double
 	return -Cdf::N(-this->d1(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility));
 }
 
-double BlackScholes::putOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::putOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
@@ -109,23 +117,25 @@ double BlackScholes::putOptionVega(double spotPrice, double strickPrice, double 
 	return spotPrice * Cdf::dN(this->d1(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * sqrt(yearsToExpiry);
 }
 
-double BlackScholes::putOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::putOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
 
-	return -(this->putOptionVega(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility) * volatility / 2.0 + -Cdf::N(-this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * riskFreeInterestRate);
+	return -(this->putOptionVega(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield) * volatility / 2.0 + -Cdf::N(-this->d2(spotPrice, strickPrice, yearsToExpiry, riskFreeInterestRate, volatility)) * exp(-riskFreeInterestRate * yearsToExpiry) * riskFreeInterestRate);
 }
 
-double BlackScholes::putOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility) const {
-	if (spotPrice < 0.0) assert(false);
-	if (strickPrice < 0.0) assert(false);
+double BlackScholes::putOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	assert(spotPrice >= 0.0);
+	assert(strickPrice >= 0.0);
 	if (yearsToExpiry < 0.0) yearsToExpiry = 0.0;
-	if (_volatility < 0.0) assert(false);
+	assert(_volatility >= 0.0);
+	assert(_dividendYield == 0.0);
 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;

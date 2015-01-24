@@ -1,5 +1,5 @@
 #include "OptionsPricingModel.h"
-#include "BlackScholes.h"
+#include "Binomial.h"
 
 #include <string>
 
@@ -13,7 +13,7 @@ int main(int argc, const char** argv) {
 		return 1;
 	}
 
-	BlackScholes bs;
+	Binomial bs;
 	CallOptionValue cov(bs);
 	switch (argv[1][0]) {
 	case 'c':

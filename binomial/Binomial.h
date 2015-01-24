@@ -3,11 +3,11 @@
 
 #include "OptionsPricingModel.h"
 
-class BlackScholes : public OptionsPricingModel
+class Binomial : public OptionsPricingModel
 {
 public:
-	BlackScholes();
-	virtual ~BlackScholes();
+	Binomial();
+	virtual ~Binomial();
 
 public:
 	virtual double callOptionValue(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const;
@@ -21,8 +21,4 @@ public:
 	virtual double putOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const;
 	virtual double putOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const;
 	virtual double putOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const;
-
-private:
-	inline double d1(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const;
-	inline double d2(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const;
 };

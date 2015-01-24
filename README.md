@@ -8,7 +8,7 @@ Let K be the strike price.
 
 Let t be the time.
 
-Let r(t) be the risk-free interest rate.
+Let r be the risk-free interest rate.
 
 Let sigma be the underlying volatility.
 

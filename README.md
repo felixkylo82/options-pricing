@@ -24,7 +24,10 @@ Delta Hedging
 =====
 
 One can build a risk-free portfolio, PI, consisting of being short one call option and long delta underlying share.
-Then, PI = -C + delta * S.
+Then,
+
+PI = -C + delta * S.
+
 One will short one call option only if d(PI)/dt >= r * PI
 One will close the position only if d(PI)/dt <= r * PI
 So at the equilibrium, d(PI)/dt = r * PI

@@ -16,7 +16,7 @@ Let X be a some random variable.
 
 Let S(t, X) be the spot price.
 
-Let C(S, K, t, r, sigma) be the call option price.
+Let C(S, t) be the call option price.
 
 Let delta be round(C)/round(S), theta be round(C)/round(t) and gamma be round^2(C)/round(S)^2
 

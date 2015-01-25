@@ -42,7 +42,7 @@ Black Scholes' model formulate an equation,
 
 r * (-C + delta * S) = d(PI)/dt = -theta - (sigma * S)^2 / 2 * gamma
 
-where theta reflecting the loss in value due to having less time for exercising the option and gamma reflects the gain in holding the option.
+where theta reflects the loss in value due to having less time for exercising the option and gamma reflects the gain in holding the option.
 
 The model gives an analytical solution to the call (/put) European option price, delta, theta and gamma given the spot price, the strick price, the time to expiry, the risk-free interest rate and the underlying volatility.
 

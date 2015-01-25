@@ -46,8 +46,6 @@ where theta reflecting the loss in value due to having less time for exercising 
 
 The model gives an analytical solution to the call (/put) European option price, delta, theta and gamma given the spot price, the strick price, the time to expiry, the risk-free interest rate and the underlying volatility.
 
-It is also shown that theta <= 0 and gamma >= 0
-
 Implied Volatility
 =====
 In reality, the actual unknown is not the option price but the underlying volatility. We can still calculate this unknown implied by the model with all sorts of numerical methods.

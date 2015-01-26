@@ -4,6 +4,8 @@
 #define _USE_MATH_DEFINES
 
 #include <cmath>
+#include <cstdlib>
+#include <cfloat>
 
 
 class Cdf
@@ -37,6 +39,20 @@ public:
 		if (INF == X) return 0.0;
 
 		return C * exp(-X * X / 2.0);
+	}
+
+	static void X(double& X1, double&X2)
+	{
+#define TWO_PI 2.0 * M_PI
+
+		double rand1 = 0.0;
+		while (rand1 == 0.0)
+			rand1 = (double)rand() / (double)RAND_MAX;
+		rand1 = sqrt(-2.0 * log(rand1));
+		double rand2 = (double)rand() / (double)RAND_MAX * TWO_PI;
+
+		X1 = rand1 * cos(rand2);
+		X2 = rand1 * sin(rand2);
 	}
 };
 

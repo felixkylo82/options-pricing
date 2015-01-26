@@ -1,5 +1,5 @@
 #include "OptionsPricingModel.h"
-#include "Binomial.h"
+#include "MonteCarlo.h"
 
 #include <string>
 
@@ -13,7 +13,7 @@ int main(int argc, const char** argv) {
 		return 1;
 	}
 
-	Binomial bs;
+	MonteCarlo bs;
 	CallOptionValue cov(bs);
 	switch (argv[1][0]) {
 	case 'c':

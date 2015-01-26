@@ -51,7 +51,7 @@ Binomial Model and Monte Carlo Model
 
 Based on delta hedging and that X follows geometric Brownian motion, using different options pricing model,
 we can compute the same results as Black Scholes' model.
-The Binomial model computes option prices with a probability tree and the Monte Carlo model computes option prices by simulation. In different problem settings, like calculating American option price, where analytical solutions do not exist, these models are particularly useful.
+Binomial model computes option prices with a probability tree and Monte Carlo model computes option prices by simulation. In different problem settings, like calculating American option price, where analytical solutions do not exist, these models are particularly useful.
 
 Implied Volatility
 =====

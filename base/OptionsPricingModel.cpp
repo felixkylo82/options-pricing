@@ -10,6 +10,62 @@ OptionsPricingModel::OptionsPricingModel() {
 OptionsPricingModel::~OptionsPricingModel() {
 }
 
+double OptionsPricingModel::callOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	return (
+		this->callOptionValue(spotPrice + FLT_EPSILON, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield) -
+		this->callOptionValue(spotPrice - FLT_EPSILON, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield)
+		) / (2.0 * FLT_EPSILON);
+}
+
+double OptionsPricingModel::callOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	return (
+		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility + FLT_EPSILON, _dividendYield) -
+		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility - FLT_EPSILON, _dividendYield)
+		) / (2.0 * FLT_EPSILON);
+}
+
+double OptionsPricingModel::callOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	return (
+		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry + FLT_EPSILON, _riskFreeInterestRate, _volatility, _dividendYield) -
+		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry - FLT_EPSILON, _riskFreeInterestRate, _volatility, _dividendYield)
+		) / (2.0 * FLT_EPSILON);
+}
+
+double OptionsPricingModel::callOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	return (
+		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate + FLT_EPSILON, _volatility, _dividendYield) -
+		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate - FLT_EPSILON, _volatility, _dividendYield)
+		) / (2.0 * FLT_EPSILON);
+}
+
+double OptionsPricingModel::putOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	return (
+		this->putOptionValue(spotPrice + FLT_EPSILON, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield) -
+		this->putOptionValue(spotPrice - FLT_EPSILON, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield)
+		) / (2.0 * FLT_EPSILON);
+}
+
+double OptionsPricingModel::putOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	return (
+		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility + FLT_EPSILON, _dividendYield) -
+		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility - FLT_EPSILON, _dividendYield)
+		) / (2.0 * FLT_EPSILON);
+}
+
+double OptionsPricingModel::putOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	return (
+		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry + FLT_EPSILON, _riskFreeInterestRate, _volatility, _dividendYield) -
+		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry - FLT_EPSILON, _riskFreeInterestRate, _volatility, _dividendYield)
+		) / (2.0 * FLT_EPSILON);
+}
+
+double OptionsPricingModel::putOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
+	return (
+		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate + FLT_EPSILON, _volatility, _dividendYield) -
+		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate - FLT_EPSILON, _volatility, _dividendYield)
+		) / (2.0 * FLT_EPSILON);
+}
+
 Function::Function(OptionsPricingModel& model) : model(model) {
 
 }

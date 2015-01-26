@@ -63,34 +63,6 @@ double Binomial::callOptionValue(double spotPrice, double strickPrice, double ye
 	return ret;
 }
 
-double Binomial::callOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	return (
-		this->callOptionValue(spotPrice + FLT_EPSILON, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield) -
-		this->callOptionValue(spotPrice - FLT_EPSILON, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield)
-		) / (2.0 * FLT_EPSILON);
-}
-
-double Binomial::callOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	return (
-		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility + FLT_EPSILON, _dividendYield) -
-		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility - FLT_EPSILON, _dividendYield)
-		) / (2.0 * FLT_EPSILON);
-}
-
-double Binomial::callOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	return (
-		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry + FLT_EPSILON, _riskFreeInterestRate, _volatility, _dividendYield) -
-		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry - FLT_EPSILON, _riskFreeInterestRate, _volatility, _dividendYield)
-		) / (2.0 * FLT_EPSILON);
-}
-
-double Binomial::callOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	return (
-		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate + FLT_EPSILON, _volatility, _dividendYield) -
-		this->callOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate - FLT_EPSILON, _volatility, _dividendYield)
-		) / (2.0 * FLT_EPSILON);
-}
-
 double Binomial::putOptionValue(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
 	assert(spotPrice >= 0.0);
 	assert(strickPrice >= 0.0);
@@ -139,32 +111,4 @@ double Binomial::putOptionValue(double spotPrice, double strickPrice, double yea
 	double ret = p[0];
 	delete[] p;
 	return ret;
-}
-
-double Binomial::putOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	return (
-		this->putOptionValue(spotPrice + FLT_EPSILON, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield) -
-		this->putOptionValue(spotPrice - FLT_EPSILON, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield)
-		) / (2.0 * FLT_EPSILON);
-}
-
-double Binomial::putOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	return (
-		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility + FLT_EPSILON, _dividendYield) -
-		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility - FLT_EPSILON, _dividendYield)
-		) / (2.0 * FLT_EPSILON);
-}
-
-double Binomial::putOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	return (
-		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry + FLT_EPSILON, _riskFreeInterestRate, _volatility, _dividendYield) -
-		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry - FLT_EPSILON, _riskFreeInterestRate, _volatility, _dividendYield)
-		) / (2.0 * FLT_EPSILON);
-}
-
-double Binomial::putOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	return (
-		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate + FLT_EPSILON, _volatility, _dividendYield) -
-		this->putOptionValue(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate - FLT_EPSILON, _volatility, _dividendYield)
-		) / (2.0 * FLT_EPSILON);
 }

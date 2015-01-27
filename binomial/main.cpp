@@ -13,8 +13,8 @@ int main(int argc, const char** argv) {
 		return 1;
 	}
 
-	Binomial bs;
-	CallOptionValue cov(bs);
+	Binomial model;
+	CallOptionValue cov(model);
 	switch (argv[1][0]) {
 	case 'c':
 		switch (argv[1][1]) {

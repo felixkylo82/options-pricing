@@ -33,7 +33,7 @@ double Binomial::callOptionValue(double spotPrice, double strickPrice, double ye
 	double up = exp(volatility * sqrt(deltaT));
 	double down = 1.0 / up;
 
-	double p0 = (term1 - down) / (up - down);
+	double p0 = (up - term1) / (up - down);
 	assert(p0 >= 0.0);
 	assert(p0 <= 1.0);
 	double p1 = 1.0 - p0;

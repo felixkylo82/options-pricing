@@ -23,6 +23,6 @@ public:
 	virtual double putOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const;
 
 private:
-	inline double d1(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const;
-	inline double d2(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility) const;
+	inline double d1(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const;
+	inline double d2(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const;
 };

@@ -22,23 +22,27 @@ double MonteCarlo::callOptionValue(double _spotPrice, double strickPrice, double
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
 	double dividendYield = _dividendYield / 100.0;
-	double spotPrice = _spotPrice * exp((riskFreeInterestRate - dividendYield) * yearsToExpiry);
 
 	const int m = 100000;
+	const int n = 100;
 
-	//double deltaT = yearsToExpiry / (n - 1);
-	//double sqrtDeltaT = sqrt(deltaT);
+	double deltaT = yearsToExpiry / (n - 1);
+	double sqrtDeltaT = sqrt(deltaT);
+	double spotPrice = _spotPrice * exp((riskFreeInterestRate - dividendYield) * yearsToExpiry);
 
-	Configuration configuration;
+	Configuration configuration[n];
 	double ret = 0.0;
 	for (int i = 0; i < m; ++i) {
-		double X1, X2;
-		Cdf::X(X1, X2);
-		configuration.S = spotPrice * exp(volatility * X1 * yearsToExpiry);
+		configuration[0].S = spotPrice;
+		for (int j = 1; j < n; ++j) {
+			double X1 = (double)(rand() % 2 * 2 - 1);
+			configuration[j].S = configuration[j - 1].S * exp(volatility * X1 * sqrtDeltaT);
+		}
 
-		configuration.V = configuration.S - strickPrice;
-		if (configuration.V < 0.0) configuration.V = 0.0;
-		ret += configuration.V;
+		double V = configuration[n - 1].S - strickPrice;
+		if (V < 0.0) V = 0.0;
+
+		ret += V;
 	}
 	ret /= (double)m;
 	ret *= exp(-riskFreeInterestRate * yearsToExpiry);
@@ -55,23 +59,27 @@ double MonteCarlo::putOptionValue(double _spotPrice, double strickPrice, double 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
 	double dividendYield = _dividendYield / 100.0;
-	double spotPrice = _spotPrice * exp((riskFreeInterestRate - dividendYield) * yearsToExpiry);
 
 	const int m = 100000;
+	const int n = 100;
 
-	//double deltaT = yearsToExpiry / (n - 1);
-	//double sqrtDeltaT = sqrt(deltaT);
+	double deltaT = yearsToExpiry / (n - 1);
+	double sqrtDeltaT = sqrt(deltaT);
+	double spotPrice = _spotPrice * exp((riskFreeInterestRate - dividendYield) * yearsToExpiry);
 
-	Configuration configuration;
+	Configuration configuration[n];
 	double ret = 0.0;
 	for (int i = 0; i < m; ++i) {
-		double X1, X2;
-		Cdf::X(X1, X2);
-		configuration.S = spotPrice * exp(volatility * X1 * yearsToExpiry);
+		configuration[0].S = spotPrice;
+		for (int j = 1; j < n; ++j) {
+			double X1 = (double)(rand() % 2 * 2 - 1);
+			configuration[j].S = configuration[j - 1].S * exp(volatility * X1 * sqrtDeltaT);
+		}
 
-		configuration.V = strickPrice - configuration.S;
-		if (configuration.V < 0.0) configuration.V = 0.0;
-		ret += configuration.V;
+		double V = strickPrice - configuration[n - 1].S;
+		if (V < 0.0) V = 0.0;
+
+		ret += V;
 	}
 	ret /= (double)m;
 	ret *= exp(-riskFreeInterestRate * yearsToExpiry);

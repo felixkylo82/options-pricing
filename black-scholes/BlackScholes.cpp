@@ -27,7 +27,7 @@ double BlackScholes::callOptionValue(double spotPrice, double strickPrice, doubl
 }
 
 double BlackScholes::callOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	if (0 == _dividendYield)
+	if (0.0 == _dividendYield)
 		this->OptionsPricingModel::callOptionDelta(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield);
 
 	assert(spotPrice >= 0.0);
@@ -43,7 +43,7 @@ double BlackScholes::callOptionDelta(double spotPrice, double strickPrice, doubl
 }
 
 double BlackScholes::callOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	if (0 == _dividendYield)
+	if (0.0 == _dividendYield)
 		this->OptionsPricingModel::callOptionVega(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield);
 
 	assert(spotPrice >= 0.0);
@@ -58,7 +58,7 @@ double BlackScholes::callOptionVega(double spotPrice, double strickPrice, double
 }
 
 double BlackScholes::callOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	if (0 == _dividendYield)
+	if (0.0 == _dividendYield)
 		this->OptionsPricingModel::callOptionTheta(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield);
 
 	assert(spotPrice >= 0.0);
@@ -74,7 +74,7 @@ double BlackScholes::callOptionTheta(double spotPrice, double strickPrice, doubl
 }
 
 double BlackScholes::callOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	if (0 == _dividendYield)
+	if (0.0 == _dividendYield)
 		this->OptionsPricingModel::callOptionRho(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield);
 
 	assert(spotPrice >= 0.0);
@@ -103,7 +103,7 @@ double BlackScholes::putOptionValue(double spotPrice, double strickPrice, double
 }
 
 double BlackScholes::putOptionDelta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	if (0 == _dividendYield)
+	if (0.0 == _dividendYield)
 		this->OptionsPricingModel::putOptionDelta(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield);
 
 	assert(spotPrice >= 0.0);
@@ -119,7 +119,7 @@ double BlackScholes::putOptionDelta(double spotPrice, double strickPrice, double
 }
 
 double BlackScholes::putOptionVega(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	if (0 == _dividendYield)
+	if (0.0 == _dividendYield)
 		this->OptionsPricingModel::putOptionVega(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield);
 
 	assert(spotPrice >= 0.0);
@@ -135,7 +135,7 @@ double BlackScholes::putOptionVega(double spotPrice, double strickPrice, double 
 }
 
 double BlackScholes::putOptionTheta(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	if (0 == _dividendYield)
+	if (0.0 == _dividendYield)
 		this->OptionsPricingModel::putOptionTheta(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield);
 
 	assert(spotPrice >= 0.0);
@@ -151,7 +151,7 @@ double BlackScholes::putOptionTheta(double spotPrice, double strickPrice, double
 }
 
 double BlackScholes::putOptionRho(double spotPrice, double strickPrice, double yearsToExpiry, double _riskFreeInterestRate, double _volatility, double _dividendYield) const {
-	if (0 == _dividendYield)
+	if (0.0 == _dividendYield)
 		this->OptionsPricingModel::putOptionRho(spotPrice, strickPrice, yearsToExpiry, _riskFreeInterestRate, _volatility, _dividendYield);
 
 	assert(spotPrice >= 0.0);

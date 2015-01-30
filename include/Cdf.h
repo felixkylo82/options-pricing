@@ -54,5 +54,22 @@ public:
 		X1 = rand1 * cos(rand2);
 		X2 = rand1 * sin(rand2);
 	}
+
+	static double pow(double X, int n) {
+		int m = (n < 0 ? -n : n);
+		double Y = X;
+
+		double Z = 1.0;
+		while (m != 0) {
+			if (m & 0x1)
+			{
+				Z *= Y;
+			}
+			Y = Y * Y;
+			m >>= 1;
+		}
+
+		return (n < 0 ? 1.0 / Z : Z);
+	}
 };
 

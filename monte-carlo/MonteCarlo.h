@@ -8,8 +8,6 @@ class MonteCarlo : public OptionsPricingModel
 private:
 	struct Configuration {
 		double S;
-		double V;
-		double PI;
 	};
 
 public:

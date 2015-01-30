@@ -22,13 +22,13 @@ double MonteCarlo::callOptionValue(double _spotPrice, double strickPrice, double
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
 	double dividendYield = _dividendYield / 100.0;
+	double spotPrice = _spotPrice * exp((riskFreeInterestRate - dividendYield) * yearsToExpiry);
 
 	const int m = 100000;
 	const int n = 100;
 
 	double deltaT = yearsToExpiry / (n - 1);
 	double sqrtDeltaT = sqrt(deltaT);
-	double spotPrice = _spotPrice * exp((riskFreeInterestRate - dividendYield) * yearsToExpiry);
 
 	Configuration configuration[n];
 	double ret = 0.0;
@@ -59,13 +59,13 @@ double MonteCarlo::putOptionValue(double _spotPrice, double strickPrice, double 
 	double riskFreeInterestRate = _riskFreeInterestRate / 100.0;
 	double volatility = _volatility / 100.0;
 	double dividendYield = _dividendYield / 100.0;
+	double spotPrice = _spotPrice * exp((riskFreeInterestRate - dividendYield) * yearsToExpiry);
 
 	const int m = 100000;
 	const int n = 100;
 
 	double deltaT = yearsToExpiry / (n - 1);
 	double sqrtDeltaT = sqrt(deltaT);
-	double spotPrice = _spotPrice * exp((riskFreeInterestRate - dividendYield) * yearsToExpiry);
 
 	Configuration configuration[n];
 	double ret = 0.0;

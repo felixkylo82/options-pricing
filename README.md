@@ -55,4 +55,4 @@ Binomial model computes option prices with a probability tree and Monte Carlo mo
 
 Implied Volatility
 =====
-In reality, the actual unknown is not the option price but the underlying volatility. We can still calculate this unknown implied by the model with all sorts of numerical methods.
+In reality, the actual unknown may not be the option price but the underlying volatility. We can, howerver, calculate the underlying volatility and the risk-free interest rate implied by the model with numerical methods.

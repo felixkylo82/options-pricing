@@ -167,9 +167,9 @@ double BlackScholes::putOptionRho(double spotPrice, double strickPrice, double y
 }
 
 double BlackScholes::d1(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const {
-	return (1.0 / volatility * sqrt(yearsToExpiry)) * (log(spotPrice / strickPrice) + (riskFreeInterestRate - dividendYield + volatility * volatility / 2.0) * yearsToExpiry);
+	return (1.0 / (volatility * sqrt(yearsToExpiry))) * (log(spotPrice / strickPrice) + (riskFreeInterestRate - dividendYield + volatility * volatility / 2.0) * yearsToExpiry);
 }
 
 double BlackScholes::d2(double spotPrice, double strickPrice, double yearsToExpiry, double riskFreeInterestRate, double volatility, double dividendYield) const {
-	return (1.0 / volatility * sqrt(yearsToExpiry)) * (log(spotPrice / strickPrice) + (riskFreeInterestRate - dividendYield - volatility * volatility / 2.0) * yearsToExpiry);
+	return (1.0 / (volatility * sqrt(yearsToExpiry))) * (log(spotPrice / strickPrice) + (riskFreeInterestRate - dividendYield - volatility * volatility / 2.0) * yearsToExpiry);
 }
